@@ -1,0 +1,121 @@
+
+:root{
+    --clr-main: pink;
+    --clr-white: #ececec;
+    --clr-gray: #e2e2e2;
+    --clr-gray: #961818;
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'rubik', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
+    margin: 0;
+    padding: 0;
+}
+
+.barra ul {
+    list-style-type: none;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    display: grid;
+    background-color: var(--clr-main);
+}
+
+aside {
+    padding: 2rem;
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-weight: 400;
+    font-size: 2rem;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.boton.menu {
+    background-color: transparent;
+    border: 0;
+    color: var(--clr-white);
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    gap: 1rem;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: .95rem;
+    border-radius: 1rem;
+
+}
+
+main {
+    background-color: rgb(184, 176, 176);
+    margin: 1rem;
+    margin-left: 0;
+    border-radius: 2rem;
+    padding: 3rem;
+}
+
+.titulo-principal {
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.contenedor-procudtos {
+    display: gird;
+    gap: 1rem;
+}
+
+.producto-imagen {
+    max-width: 100%;
+    border-radius: 1rem;
+    background-position: center;
+}
+
+.producto-detalle {
+    background-color: var(--clr-main);
+    color: black;
+    padding: .5rem;
+    border-radius: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.producto-titulo {
+    font-size: 1rem;
+}
+
+.producto-agregar {
+    border: 0;
+    background-color: #ebe5e5;
+    color: rgb(15, 15, 15);
+    padding: .25rem;
+    text-transform: uppercase;
+    border-radius: 3rem;
+    border: 2px solid var(--clr-white);
+}
+
+.producto-agregar:hover {
+    background-color: var(--clr-main);
+    color: black;
+}
