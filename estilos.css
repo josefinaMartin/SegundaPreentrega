@@ -1,85 +1,131 @@
 
-:root{
-    --clr-main: pink;
-    --clr-white: #ececec;
-    --clr-gray: #e2e2e2;
-    --clr-gray: #961818;
 
-}
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'rubik', sans-serif;
-}
-
-h1, h2, h3, h4, h5, h6, p, a, input, textarea, ul {
-    margin: 0;
-    padding: 0;
-}
-
-.barra ul {
-    list-style-type: none;
-
-}
-
-a {
     text-decoration: none;
+    list-style: none;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    
 }
 
 .wrapper {
     display: grid;
-    background-color: var(--clr-main);
-}
-
-aside {
-    padding: 2rem;
-    color: var(--clr-white);
-    display: flex;
-    flex-direction: column;
+    background-color: white;
 }
 
 .logo {
-    font-weight: 400;
-    font-size: 2rem;
+    font-size: 40px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 800;
 }
 
 .menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
 }
 
-.boton.menu {
-    background-color: transparent;
-    border: 0;
-    color: var(--clr-white);
-    font-size: 1rem;
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: black;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.menu .navbar ul li{
+    position: relative;
+    float: left;
+}
+
+.menu .navbar ul li a {
+    font-size: 18px;
+    padding: 20px;
+    color: black;
+    display: block;
+}
+
+.menu .navbar ul li a:hover {
+    color: white;
+}
+
+#menu {
+    display: none;
+}
+
+.menu-icono {
+    width: 25px;
+}
+
+.menu label {
     cursor: pointer;
-    display: flex;
-    gap: 1rem;
-    font-weight: 600;
-    padding: 1rem;
-    font-size: .95rem;
-    border-radius: 1rem;
-
+    display: none;
 }
+
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito {
+    display: none;
+}
+
+.submenu:hover #carrito {
+    display: block;
+    position: absolute;
+    right: 0;
+    backdrop-filter: blur(10px);
+    top: 100%;
+    z-index: 1;
+    background-color: #4E4b5076;
+    padding: 20px;
+    min-width: 400px;
+}
+
+table {
+    width: 100%;
+}
+
+th, td {
+    color: aliceblue;
+}
+
+.footer {
+	background-color: red;
+	color: white;
+	padding: 20px 0;
+	text-align: center;
+}
+
 
 main {
-    background-color: rgb(184, 176, 176);
-    margin: 1rem;
+    background-color: grey;
+    margin: 0;
     margin-left: 0;
-    border-radius: 2rem;
-    padding: 3rem;
+    padding: 13rem;
 }
 
-.titulo-principal {
-    color: black;
-    margin-bottom: 2rem;
-}
 
-.contenedor-procudtos {
+.contenedor-productos {
     display: gird;
     gap: 1rem;
 }
@@ -91,7 +137,7 @@ main {
 }
 
 .producto-detalle {
-    background-color: var(--clr-main);
+    background-color: ghostwhite;
     color: black;
     padding: .5rem;
     border-radius: 1rem;
@@ -112,10 +158,10 @@ main {
     padding: .25rem;
     text-transform: uppercase;
     border-radius: 3rem;
-    border: 2px solid var(--clr-white);
+    border: 2px solid ;
 }
 
 .producto-agregar:hover {
-    background-color: var(--clr-main);
+    background-color: gainsboro;
     color: black;
 }

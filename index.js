@@ -1,117 +1,75 @@
 
-const productosArray = [
-    {
-        id: "Vans old skool",
-        titulo: "Vans old skool",
-        imagen: "./img/vans1.jpg",
-        categoria: {
-            nombre: "zapatillas",
-            id: "zapatillas"
-        },
-        precio: 30000
-        },
-        {
-            id: "Vans Filmore",
-            titulo: "Vans Filmore",
-            imagen: "./img/vans2.jpg",
-            categoria: {
-                nombre: "zapatillas",
-                id: "zapatillas"
-            },
-            precio: 30000
-        },
-        {
-            id: "Vans old skool girs",
-            titulo: "Vans old skool girs",
-            imagen: "./img/vans3.jpg",
-            categoria: {
-                nombre: "zapatillas",
-                id: "zapatillas"
-            },
-            precio: 30000
-        },
-        {
-            id: "Vans u ultrarange exo",
-            titulo: "Vans u ultrarange exo",
-            imagen: "./img/vans4.jpg",
-            categoria: {
-                nombre: "zapatillas",
-                id: "zapatillas"
-            },
-            precio: 30000
-        },
-        {
-            id: "Vans u sk8-hi",
-            titulo: "Vans u sk8-hi",
-            imagen: "./img/vans5.jpeg",
-            categoria: {
-                nombre: "zapatillas",
-                id: "zapatillas"
-            },
-            precio: 30000
-        }
-];
+const carrito = document.getElementById('carrito');
+const elementos1 = document.getElementById('lista-1');
+const elementos2 = document.getElementById('lista-2');
+const elementos3 = document.getElementById('lista-3');
+const lista = document.querySelector('#lista-carrito tbody');
+const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
 
-const contenedorProductos = document.querySelector("#contenedor-prodcutos");
-let botonesAgregar = document.querySelectorAll("#producto-agregar");
-const numerito = document.querySelector("#numerito")
+cargarEventListeners();
 
-function cargarProductos(productosElegidos) {
-    productos.forEach(producto => {
+function cargarEventlisteners() {
+    elementos1.addEventListener('click, comprarElemento');
+    elementos2.addEventListener('click, comprarElemento');
+    elementos3.addEventListener('click, comprarElemento');
+    carrito.addEventListener('click, eliminarElemento');
 
-        const div = document.createElement("div");
-        div.classList.add("producto");
-        div.innerHTML = `
-        <img class="producto-imagen" src="${producto.imagen}" alt="${producto.titulo}">
-        <div class="producto-detalles">
-            <h3 class="producto-titulo">${producto.titulo}</h3>
-            <p class="producto-precio">${producto.precio}</p>
-            <button class="producto-agregar" id="${preducto.id}">Agregar</button>
-        </div>
-        `;
-
-        contenedorProductos.append(div);
-
-    })
-
-    actualizarBotonesAgregar();
-    console.log(botonesAgregar);
-};
-
-cargarProductos(productos);
-
-function actualizarBotonesAgregar() {
-    botonesAgregar = document.querySelectorAll("#producto-agregar");
-
-    botonesAgregar.forEach(boton => {
-        boton.addEventListener("click", agregarAlcarrito);
-    });
+    vaciarCarritoBtn.addEventListener('click, vaciarCarrito');
 }
 
-const productosEncarrito = [];
+function comprarElemento(e) {
+    e.preventDefault();
+    if(e.target.classList.contains('agregar-carrito')) {
+        const elemento = e.target.parentElement.parentElement;
+        leerDatosElemento(elemento);
+    }
+}
 
-function agregarAlcarrito(e) {
-
-    const idBoton = e.currentTarget.id;
-    const productoAgregado = producto.find(prodcuto => producto.id === idBoton); 
-
-    if (productosEncarrito.some(producto => producto.id === idBoton)) {
-        const index = productosEncarrito.findIndex(producto => prodcuto.id === idBoton);
-        productosEncarrito[index].cantidad++;
-    } else {
-        productoAgregado.cantidad = 1;
-        productosEncarrito.push(prodcutoAgregado);
+function leerDatosElemento(elemento) {
+    const infoElemento = {
+        imagen: elemento.querySelector('img').src,
+        titulo: elemento.querySelector('h3').texteContent,
+        precio: elemento.querySelector('.precio').texteContent,
+        id: elemento.querySelector('a').getAttribute('data-id')
     }
 
-    actualizarNumerito();
-
-    localStorage.setItem("productos-en-carrito", JSON.stringify(prodcutosEncarrito));
+    inserCarrito(infoElemento);
 }
 
-function actualizarNumerito() {
-    let nuevoNumerito = productosEncarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
-    numerito.innerTex = nuevoNumerito;
+function insertarCarrito(elemento) {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+    <td>
+        <img src="${elemento.imagen}"  widt=100>
+    </td>
+    <td>
+        ${elemento.titulo}
+    </td>
+    <td>
+        ${elemento.precio}
+    </td>
+    <td>
+        <a a herf="#" class="borrar" data-id="${elemento.id}">X</a>
+    </td>
+    `;
 
+    lista.appendChild(row);
 }
 
+function eliminarElemento(e) {
+    e.preventDefault();
+    let elemento,
+        elementoId;
+    if(e.target.classList.contains('borrar')) {
+        e.target.parentElement.parentElement.remove();
+        elemento = e.target.parentElement.parentElement;
+        elementoId = elemento.querySelector('a').getAttribute('data-id');
+    }
+}
 
+function vaciarCarrito() {
+    while(lista.firstChild) {
+        lista.removeChild(lista.firstChild);
+    }
+    return false;
+}
